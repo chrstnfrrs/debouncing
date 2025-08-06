@@ -1,4 +1,4 @@
-import { href, Link, NavLink, Outlet } from "react-router";
+import { href, NavLink, Outlet } from "react-router";
 
 export default function Home() {
   return (
@@ -15,17 +15,17 @@ export default function Home() {
         <li>
           <NavLink
             className={({ isActive }) => (isActive ? "underline" : "")}
-            to={href("/use-debounce-value")}
+            to={href("/use-debounce-callback")}
           >
-            useDebounceValue
+            useDebounceCallback
           </NavLink>
         </li>
         <li>
           <NavLink
             className={({ isActive }) => (isActive ? "underline" : "")}
-            to={href("/use-debounce-callback")}
+            to={href("/use-debounce-value")}
           >
-            useDebounceCallback
+            useDebounceValue
           </NavLink>
         </li>
         <li>

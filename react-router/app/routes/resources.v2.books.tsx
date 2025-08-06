@@ -43,7 +43,12 @@ export async function clientLoader({
     };
   }
 
-  await new Promise((resolve) => setTimeout(resolve, 500));
+  await new Promise((resolve) => {
+    const timer = setTimeout(resolve, 500);
+    request.signal.addEventListener("abort", () => {
+      clearTimeout(timer);
+    });
+  });
 
   return serverLoader();
 }
