@@ -17,6 +17,12 @@ function Books() {
 
   const fetchBooks = useCallback(
     debounce(async (searchTerm: string) => {
+      if (!searchTerm.trim()) {
+        setData(undefined);
+        setIsLoading(false);
+        return;
+      }
+
       const res = await fetch(
         `https://openlibrary.org/search.json?q=${encodeURIComponent(
           searchTerm
@@ -25,7 +31,8 @@ function Books() {
 
       const data = await res.json();
 
-      setData(BooksSchema.parse(data).docs);
+      const parsedData = BooksSchema.parse(data);
+      setData(parsedData.docs);
       setIsLoading(false);
     }, 500),
     []
@@ -43,6 +50,8 @@ function Books() {
             id="search"
             type="text"
             onChange={(e) => {
+              // Question: How do we handle validatity checks?
+              // e.g. must be at least 3 characters
               const value = e.target.value;
               setIsLoading(true);
               setValue(value);

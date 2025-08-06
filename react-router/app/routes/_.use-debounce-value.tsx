@@ -16,6 +16,8 @@ function Books() {
 
   const { data, isLoading } = useQuery({
     queryKey: ["book-search", debouncedValue],
+    // Note: Only run the query if there's a search term
+    // Note: We may need to handle other validaty checks
     enabled: !!debouncedValue.trim(),
     queryFn: async () => {
       const res = await fetch(
@@ -30,6 +32,7 @@ function Books() {
     },
   });
 
+  // Note: Derive loading state from network and debounce state
   const isLoadingState = isLoading || debouncedValue !== value;
 
   return (
@@ -97,6 +100,7 @@ function Books() {
     </div>
   );
 }
+
 export default function UseDebounceValue() {
   return (
     <QueryClientProvider client={queryClient}>

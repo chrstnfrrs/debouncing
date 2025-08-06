@@ -1,7 +1,4 @@
-import type {
-  ClientLoaderFunctionArgs,
-  LoaderFunctionArgs,
-} from "react-router";
+import type { LoaderFunctionArgs } from "react-router";
 import { BooksSchema } from "~/schemas/books";
 
 export async function loader({ request }: LoaderFunctionArgs) {
@@ -12,7 +9,7 @@ export async function loader({ request }: LoaderFunctionArgs) {
     return null;
   }
 
-  await new Promise((resolve) => setTimeout(resolve, 1000));
+  await new Promise((resolve) => setTimeout(resolve, 500));
 
   const res = await fetch(
     `https://openlibrary.org/search.json?q=${encodeURIComponent(

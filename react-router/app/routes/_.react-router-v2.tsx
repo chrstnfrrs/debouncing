@@ -25,7 +25,6 @@ export default function ReactRouter() {
             }}
             onBlur={(e) => {
               if (!e.target.value.trim()) {
-                console.log("blur", e.target.value);
                 fetcher.load(
                   `${href("/resources/v2/books")}?q=${encodeURIComponent(e.target.value)}`
                 );
