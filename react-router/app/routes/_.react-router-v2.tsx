@@ -5,7 +5,6 @@ import type { loader as booksLoader } from "./resources.v2.books";
 
 export default function ReactRouter() {
   const fetcher = useFetcher<typeof booksLoader>();
-  console.log("fetcher", fetcher.state);
 
   return (
     <div className="flex justify-between gap-4">
