@@ -52,6 +52,8 @@ export default function Books() {
   >(undefined);
 
   const fetchBooks = useDebounceCallback(async (searchTerm: string) => {
+    console.log("1 - searchTerm:", searchTerm);
+
     if (!searchTerm) {
       return;
     }
@@ -64,6 +66,7 @@ export default function Books() {
 
     const data = await res.json();
 
+    console.log("2 - searchTerm:", searchTerm);
     setIsLoading(false);
     return setData(BooksSchema.parse(data).docs);
   }, 500);
