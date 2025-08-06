@@ -31,11 +31,6 @@ function Books() {
     []
   );
 
-  let status: "loading" | "success" | "no-search-term" | "no-results" =
-    "no-search-term";
-
-  // console.log({ value, data, isLoading });
-
   return (
     <div className="flex justify-between gap-4">
       <div className="flex flex-col flex-1/2 gap-4">
